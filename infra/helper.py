@@ -1442,6 +1442,8 @@ def run_fuzzer(args):
       '%s:/out' % args.project.out,
       '-t',
       BASE_RUNNER_IMAGE,
+      'timeout',
+      '2m', # A CHANGER PAR 4h pour le vrai run de test, mais tester avant avec 2m (ou moins) pour verifier que tout marche bien
       'run_fuzzer',
       args.fuzzer_name,
   ] + args.fuzzer_args)

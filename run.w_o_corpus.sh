@@ -11,7 +11,6 @@ mkdir -p build/out/corpus_without_seeds
 find build/out/libjpeg-turbo -name "*.zip" -type f -delete
 
 # Run the fuzzer on the compress_fuzzer harness with initial seeds
-# timeout 30s for test purposes, to make sure everything works properly
 python3 infra/helper.py run_fuzzer libjpeg-turbo compress_fuzzer --corpus-dir build/out/corpus_without_seeds
 
 # Generate coverage report
