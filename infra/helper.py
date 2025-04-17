@@ -1443,7 +1443,7 @@ def run_fuzzer(args):
       '-t',
       BASE_RUNNER_IMAGE,
       'timeout',
-      '2m', # A CHANGER PAR 4h pour le vrai run de test, mais tester avant avec 2m (ou moins) pour verifier que tout marche bien
+      '4h', 
       'run_fuzzer',
       args.fuzzer_name,
   ] + args.fuzzer_args)
