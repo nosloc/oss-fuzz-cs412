@@ -17,19 +17,19 @@
 
 FROM gcr.io/oss-fuzz-base/base-builder
 RUN apt-get update && apt-get install -y make yasm cmake
-RUN git clone --depth 1 https://github.com/libjpeg-turbo/fuzz && \
-    cat fuzz/branches.txt | while read branch; do \
-      git clone --depth 1 https://github.com/libjpeg-turbo/libjpeg-turbo -b $branch libjpeg-turbo.$branch; \
+RUN git clone --depth 1 https://github.com/libjpeg-turbo/fuzz && echo "main" > branches.txt && \
+    cat branches.txt | while read branch; do \
+      git clone --depth 1 https://github.com/nosloc/libjpeg-turbo-cs412 -b $branch libjpeg-turbo-cs412.$branch; \
     done
 
 RUN git clone --depth 1 https://github.com/libjpeg-turbo/seed-corpora
 RUN cd seed-corpora && zip -r ../decompress_fuzzer_seed_corpus.zip afl-testcases/jpeg* bugs/decompress*
-RUN cat fuzz/branches.txt | while read branch; do \
-      zip -r decompress_fuzzer_seed_corpus.zip libjpeg-turbo.$branch/testimages/*.jpg; \
+RUN cat branches.txt | while read branch; do \
+      zip -r decompress_fuzzer_seed_corpus.zip libjpeg-turbo-cs412.$branch/testimages/*.jpg; \
     done
 RUN cd seed-corpora && zip -r ../compress_fuzzer_seed_corpus.zip afl-testcases/bmp afl-testcases/gif* afl-testcases/targa bugs/compress*
-RUN cat fuzz/branches.txt | while read branch; do \
-      zip -r compress_fuzzer_seed_corpus.zip libjpeg-turbo.$branch/testimages/*.bmp libjpeg-turbo.$branch/testimages/*.ppm; \
+RUN cat branches.txt | while read branch; do \
+      zip -r compress_fuzzer_seed_corpus.zip libjpeg-turbo-cs412.$branch/testimages/*.bmp libjpeg-turbo-cs412.$branch/testimages/*.ppm; \
     done
 RUN rm -rf seed-corpora
 

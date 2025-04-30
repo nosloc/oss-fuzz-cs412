@@ -17,8 +17,8 @@
 set -e
 set -u
 
-cat fuzz/branches.txt | while read branch; do
-	pushd libjpeg-turbo.$branch
+cat branches.txt | while read branch; do
+	pushd libjpeg-turbo-cs412.$branch
 	if [ "$branch" = "main" ]; then
 		sh fuzz/build.sh
 	else
