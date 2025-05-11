@@ -29,3 +29,18 @@ index 7ddd36554..d6d93d864 100644
      done
  RUN rm -rf seed-corpora
  
+diff --git a/projects/libjpeg-turbo/build.sh b/projects/libjpeg-turbo/build.sh
+index b3ae06f30..99886e272 100644
+--- a/projects/libjpeg-turbo/build.sh
++++ b/projects/libjpeg-turbo/build.sh
+@@ -17,8 +17,8 @@
+ set -e
+ set -u
+ 
+-cat fuzz/branches.txt | while read branch; do
+-	pushd libjpeg-turbo.$branch
++cat branches.txt | while read branch; do
++	pushd libjpeg-turbo-cs412.$branch
+ 	if [ "$branch" = "main" ]; then
+ 		sh fuzz/build.sh
+ 	else
