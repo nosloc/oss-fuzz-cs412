@@ -17,4 +17,5 @@ PID=$!
 sleep 1800
 kill -SIGTERM "$PID"
 
-mv build/out/libjpeg-turbo/report/* ./coverage_report/improve1/
+mv build/out/libjpeg-turbo/report/* ./coverage_report/improve_v2/
+cp -r build/ out_imp_v2/
