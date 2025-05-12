@@ -1,0 +1,10 @@
+prefix=/work
+exec_prefix=/work
+libdir=/work/lib
+includedir=/work/include
+
+Name: libturbojpeg
+Description: A SIMD-accelerated JPEG codec that provides the TurboJPEG API
+Version: 3.0.5
+Libs: -L${libdir} -lturbojpeg
+Cflags: -I${includedir}
