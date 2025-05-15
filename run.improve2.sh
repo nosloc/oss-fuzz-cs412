@@ -1,3 +1,7 @@
+sudo apt update && sudo apt install -y git cmake build-essential gcc g++ nasm curl unzip
+git clone git@github.com:nosloc/oss-fuzz-cs412.git
+cd oss-fuzz-cs412
+
 # Build the image for fuzzing the libjpeg-turbo project
 echo y | python3 infra/helper.py build_image libjpeg-turbo
 

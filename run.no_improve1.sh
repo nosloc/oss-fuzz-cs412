@@ -1,3 +1,7 @@
+sudo apt update && sudo apt install -y git cmake build-essential gcc g++ nasm curl unzip
+git clone git@github.com:nosloc/oss-fuzz-cs412.git
+cd oss-fuzz-cs412
+
 # make the build clone the original libjpeg-turbo repository
 git apply -R build_patch
 
