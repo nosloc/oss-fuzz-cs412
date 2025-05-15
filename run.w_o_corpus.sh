@@ -1,3 +1,6 @@
+# make the build clone the original libjpeg-turbo repository
+git apply -R build_patch
+
 # Build the image for fuzzing the libjpeg-turbo project
 echo y | python3 infra/helper.py build_image libjpeg-turbo
 
@@ -15,9 +18,4 @@ python3 infra/helper.py run_fuzzer libjpeg-turbo compress_fuzzer --corpus-dir bu
 
 # Generate coverage report
 python3 infra/helper.py build_fuzzers --sanitizer coverage libjpeg-turbo
-python3 infra/helper.py coverage libjpeg-turbo --corpus-dir build/out/corpus_without_seeds --fuzz-target compress_fuzzer &
-PID=$!
-sleep 1800
-kill -SIGTERM "$PID"
-
-mv build/out/libjpeg-turbo/report/* ./coverage_report/w_o_seeds
+python3 infra/helper.py coverage libjpeg-turbo --corpus-dir build/out/corpus_without_seeds --fuzz-target compress_fuzzer
