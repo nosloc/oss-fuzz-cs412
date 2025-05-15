@@ -3,7 +3,7 @@ git clone git@github.com:nosloc/oss-fuzz-cs412.git
 cd oss-fuzz-cs412
 
 # make the build clone the original libjpeg-turbo repository
-git apply -R build_patch
+git apply -R build_patch.diff
 
 # Build the image for fuzzing the libjpeg-turbo project
 echo y | python3 infra/helper.py build_image libjpeg-turbo
